@@ -8,6 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/node"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/urfave/cli/v2"
+        "github.com/ethereum/go-ethereum/log"
 )
 
 var (
@@ -19,9 +20,11 @@ var (
 
 // RegisterTaikoAPIs initializes and registers the Taiko RPC APIs.
 func RegisterTaikoAPIs(stack *node.Node, cfg *ethconfig.Config, backend *eth.Ethereum) {
+	log.Warn("Register Taiko API")
 	if os.Getenv("TAIKO_TEST") != "" {
 		return
 	}
+	log.Warn("Really Register Taiko API")
 	// Add methods under "taiko_" RPC namespace to the available APIs list
 	stack.RegisterAPIs([]rpc.API{
 		{
@@ -32,7 +35,8 @@ func RegisterTaikoAPIs(stack *node.Node, cfg *ethconfig.Config, backend *eth.Eth
 		{
 			Namespace:     "taikoAuth",
 			Service:       eth.NewTaikoAuthAPIBackend(backend),
-			Authenticated: true,
+			Authenticated: true, 
+			Public:        true,
 		},
 	})
 }
