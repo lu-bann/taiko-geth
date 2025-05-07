@@ -1,3 +1,5 @@
+Blatantly lifted from https://github.com/gattaca-com/taiko-geth-fork
+
 # taiko-geth
 
 [![CI](https://github.com/taikoxyz/taiko-geth/actions/workflows/ci.yml/badge.svg)](https://github.com/taikoxyz/taiko-geth/actions/workflows/ci.yml)

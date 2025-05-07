@@ -222,6 +222,9 @@ type Block struct {
 	// inter-peer block relay.
 	ReceivedAt   time.Time
 	ReceivedFrom interface{}
+
+	// Ignore any chain head updates with this set
+	PreconfBlock bool
 }
 
 // "external" block encoding. used for eth protocol, etc.
