@@ -150,14 +150,6 @@ func (g *SimulationAPIWorker) simulateAnchorTx(tx *types.Transaction, newEnvPara
 		return
 	}
 
-	// Ensure anchor tx nonce matches parent block number
-	if err := g.validateAnchorNonce(tx, simEnv); err != nil {
-		res <- SimulationResponse{
-			error: fmt.Errorf("invalid anchor nonce: %w", err),
-		}
-		return
-	}
-
 	// Commit the anchor to the state
 	receipt, _, _, err := g.commitTx(simEnv, tx)
 
